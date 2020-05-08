@@ -14,8 +14,20 @@ php main.php
 
 Please check launch.json.
 
-## Tools
+--- 
 
-### composer
+## composer
 
+### Laravel
 
+#### Create new project
+
+```bash
+composer create-project --prefer-dist laravel/laravel php-sample-application
+```
+
+### Run
+
+```bash
+php artisan serve
+```

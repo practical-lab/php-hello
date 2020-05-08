@@ -21,7 +21,7 @@ RUN apt-get update \
     && apt-get -y install --no-install-recommends apt-utils dialog 2>&1 \
     #
     # install git iproute2, procps, lsb-release (useful for CLI installs)
-    && apt-get -y install git openssh-client less iproute2 procps iproute2 lsb-release \
+    && apt-get -y install git openssh-client less iproute2 procps iproute2 lsb-release zip unzip \
     #
     # Install xdebug
     && yes | pecl install xdebug \
@@ -43,7 +43,7 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 RUN php -r "readfile('https://getcomposer.org/installer');" > composer-setup.php ;\
-    # php -r "if (hash_file('SHA384', 'composer-setup.php') === 'a52be7b8724e47499b039d53415953cc3d5b459b9d9c0308301f867921c19efc623b81dfef8fc2be194a5cf56945d223') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;" ;\
+    # php -r "if (hash_file('sha384', 'composer-setup.php') === 'e0012edf3e80b6978849f5eff0d4b4e4c79ff1609dd1e613307e16318854d24ae64f26d17af3ef0bf7cfb710ca74755a') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"\
     php composer-setup.php --filename=composer;\
     php -r "unlink('composer-setup.php');" ;\
     mv composer /usr/local/bin/composer
